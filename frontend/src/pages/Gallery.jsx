@@ -54,14 +54,6 @@ const mediaItems = [
     type: "video",
     videoSrc: "/assets/video6.webm",
     poster: "/assets/video-thumb.jpg",
-    title: "Designed in London. Made for India.",
-    description:
-      "Back-image-desktop that lets you chase chaos without running out of power.",
-  },
-  {
-    type: "video",
-    videoSrc: "/assets/video7.webm",
-    poster: "/assets/video-thumb.jpg",
     title: "A 350 mAh battery",
     description:
       "Beauty and geometry come together to create Anarc’s unique octagonal dial.",
@@ -69,23 +61,24 @@ const mediaItems = [
 ];
 
 function Gallery() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+  const itemsToRender = isMobile ? mediaItems.slice(0, 3) : mediaItems;
+
   const onInit = () => {
     console.log("lightGallery has been initialized");
   };
 
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  // Show only first 3 videos on mobile (tailwind md:hidden)
-  const isMobile = window.innerWidth <= 768;
-  const itemsToRender = isMobile ? mediaItems.slice(0, 3) : mediaItems;
-
   return (
-    <div className="w-full min-h-screen overflow-hidden bg-black">
-      {/* ✅ Animated Heading */}
+    // ✅ Scroll wrapper for this section
+    <div className="w-full min-h-screen overflow-hidden bg-black" data-scroll-section>
       <motion.h1
         className="text-6xl text-white uppercase font-bold text-center mt-8 mb-3"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
+        data-scroll
+        data-scroll-speed="2"
       >
         Design to be Different
       </motion.h1>
@@ -104,6 +97,8 @@ function Gallery() {
               onClick={() =>
                 setActiveIndex(activeIndex === index ? null : index)
               }
+              data-scroll
+              data-scroll-speed="1"
             >
               <video
                 src={item.videoSrc}
@@ -115,10 +110,12 @@ function Gallery() {
                 className="w-full h-80 object-cover"
               />
 
-              {/* Hover for desktop, click/tap for mobile */}
+              {/* Overlay Info */}
               <div
                 className={`absolute inset-0 bg-[#8888884d] bg-opacity-50 backdrop-blur-md flex flex-col justify-center text-start text-white transition-all duration-300 transform ${
-                  activeIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  activeIndex === index
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
                 } group-hover:opacity-100 group-hover:translate-y-0`}
               >
                 <h1 className="text-2xl font-bold m-3">{item.title}</h1>

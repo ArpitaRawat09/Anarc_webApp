@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 
 const ProductDetailPage = () => {
   return (
-    <div className="relative bg-black py-10 px-4 sm:py-16 sm:px-6 text-center text-white min-h-screen">
+    <div data-scroll-section className="relative bg-black py-10 px-4 sm:py-16 sm:px-6 text-center text-white min-h-screen">
       <motion.h2
+        data-scroll
+        data-scroll-speed="2"
         className="text-3xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text"
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
@@ -12,6 +14,8 @@ const ProductDetailPage = () => {
       </motion.h2>
 
       <motion.p
+        data-scroll
+        data-scroll-speed="1"
         className="text-sm sm:text-lg text-gray-300 max-w-xl mx-auto mb-8"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,6 +28,8 @@ const ProductDetailPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto text-left">
         {features.map((feature, index) => (
           <motion.div
+            data-scroll
+            data-scroll-speed="1.5"
             key={index}
             className="p-6 sm:p-8 border border-gray-500 rounded-lg bg-transparent bg-opacity-10 shadow-md backdrop-blur-sm transition"
             initial={{ opacity: 0, y: 20 }}
@@ -39,7 +45,11 @@ const ProductDetailPage = () => {
         ))}
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-around items-center gap-6 sm:gap-0 mt-12 sm:mt-20 mb-8">
+      <div
+        data-scroll
+        data-scroll-speed="1"
+        className="flex flex-col sm:flex-row justify-around items-center gap-6 sm:gap-0 mt-12 sm:mt-20 mb-8"
+      >
         <div className="text-center">
           <h2 className="text-3xl sm:text-5xl font-bold">700 nits</h2>
           <p className="text-zinc-400 text-lg sm:text-2xl">Peak brightness</p>

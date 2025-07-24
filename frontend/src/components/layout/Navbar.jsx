@@ -44,7 +44,7 @@ const Navbar = () => {
           <NavLink
             key={link.name}
             to={link.path}
-            className="text-white tracking-wider transition-all hover:scale-110 hover:font-bold"
+            className="text-white tracking-wider transition-all hover:scale-110  hover:bg-white hover:text-black hover:rounded-full hover:px-2"
           >
             {link.name}
           </NavLink>

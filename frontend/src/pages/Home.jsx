@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ThreeDViewer from "../components/sections/ThreeDViewer";
-import BlurText from "../components/textanimate/BlurText";
+import BlurText from "../components/layout/BlurText";
 
 const Home = () => {
   const handleAnimationComplete = () => {
@@ -28,7 +28,7 @@ const Home = () => {
           />
 
           <motion.p
-            className="text-sm sm:text-base md:text-lg text-gray-300  px-2 sm:px-0 text-start"
+            className="text-sm sm:text-base md:text-lg text-gray-300  px-2 sm:px-0 text-start font-thin"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
